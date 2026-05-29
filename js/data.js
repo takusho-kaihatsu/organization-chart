@@ -1,7 +1,8 @@
 const deptCache = {};
 
 async function fetchDeptData(sheetName) {
-  const url = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(sheetName)}`;
+  // headers=1: 1行目のみをヘッダーとして使う（gvizが複数行をヘッダーと誤検出するのを防ぐ）
+  const url = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(sheetName)}&headers=1`;
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Failed to fetch ${sheetName}: ${res.status}`);
   const text = await res.text();
