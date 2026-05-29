@@ -332,32 +332,36 @@ body {
     display: none !important;
   }
 
+  /* 金色ボーダー・背景色などを忠実に印刷 */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
   body { background: #fff; }
   #main-content { padding: 0; }
 
-  /* 表示中のタブのみ印刷（画面そのまま） */
+  /* 表示中の部署のみ印刷（画面そのまま） */
   .dept-view { display: none !important; }
   .dept-view.active { display: block !important; }
 
-  /* 全社一覧: overflow・heightをリセットし内容を全て出力 */
+  /* 全社一覧: スケール解除・overflow解除 */
   .all-dept-block-outer {
     overflow: visible !important;
     height: auto !important;
     margin-bottom: 8px !important;
     page-break-inside: avoid;
   }
-  /* スケール解除（A3横で全部署を印刷）*/
   .all-dept-block {
     transform: none !important;
     width: 100% !important;
   }
+  .all-dept-content { overflow-x: visible !important; }
+  /* 全社一覧のみ折り返し許可（部署別ビューには適用しない） */
+  #all-depts-view .dept-layout { flex-wrap: wrap; }
 
   /* 選択外の部署は非表示 */
   .print-hidden { display: none !important; }
-
-  /* 水平スクロールを印刷でも展開 */
-  .all-dept-content { overflow-x: visible !important; }
-  .dept-layout { flex-wrap: wrap; }
 
   @page {
     size: A3 landscape;
