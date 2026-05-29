@@ -127,7 +127,7 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 4px 6px;
-  width: 72px;
+  width: 90px;
   min-height: 40px;
   margin-right: 10px;
   display: flex;
@@ -135,9 +135,8 @@ body {
   justify-content: center;
   flex-shrink: 0;
   white-space: pre-line;
-  word-break: break-all;
   text-align: center;
-  line-height: 1.3;
+  line-height: 1.4;
 }
 
 .section-members {
@@ -149,7 +148,7 @@ body {
 
 /* ========== Member Card ========== */
 .member-card {
-  width: 100px;
+  width: 116px;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -171,7 +170,7 @@ body {
 
 .member-photo-wrap {
   width: 100%;
-  height: 80px;
+  height: 96px;
   overflow: hidden;
   background: #f0f0f0;
 }
@@ -184,17 +183,17 @@ body {
 }
 
 .member-name {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: bold;
-  padding: 4px 4px 2px;
+  padding: 5px 4px 2px;
   text-align: center;
   line-height: 1.2;
 }
 
 .member-role {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   color: #888;
-  padding: 0 4px 4px;
+  padding: 0 4px 5px;
   text-align: center;
   line-height: 1.2;
 }
@@ -369,7 +368,7 @@ body {
   }
   .section-row::before { display: block !important; }
   .section-label {
-    width: 72px !important;
+    width: 90px !important;
     min-height: 40px !important;
     margin-right: 10px !important;
     margin-bottom: 0 !important;
