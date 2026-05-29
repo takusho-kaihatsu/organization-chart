@@ -93,6 +93,7 @@ body {
   padding-right: 16px;
   border-right: 2px solid #ccc;
   min-width: 116px;
+  align-self: stretch; /* 課が多くても縦バーを下まで伸ばす */
 }
 
 .sections-wrap {
@@ -341,9 +342,37 @@ body {
   body { background: #fff; }
   #main-content { padding: 0; }
 
-  /* 表示中の部署のみ印刷（画面そのまま） */
+  /* 表示中の部署のみ印刷 */
   .dept-view { display: none !important; }
   .dept-view.active { display: block !important; }
+
+  /* モバイルCSS上書き: 印刷は常にデスクトップレイアウト */
+  .dept-layout {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+  }
+  .direct-members {
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    border-right: 2px solid #ccc !important;
+    border-bottom: none !important;
+    padding-right: 16px !important;
+    padding-bottom: 0 !important;
+    align-self: stretch !important;
+  }
+  .section-row {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+  }
+  .section-row::before { display: block !important; }
+  .section-label {
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed !important;
+    width: auto !important;
+    min-height: 60px !important;
+    margin-right: 10px !important;
+    margin-bottom: 0 !important;
+  }
 
   /* 全社一覧: スケール解除・overflow解除 */
   .all-dept-block-outer {
@@ -357,8 +386,7 @@ body {
     width: 100% !important;
   }
   .all-dept-content { overflow-x: visible !important; }
-  /* 全社一覧のみ折り返し許可（部署別ビューには適用しない） */
-  #all-depts-view .dept-layout { flex-wrap: wrap; }
+  #all-depts-view .dept-layout { flex-wrap: wrap !important; }
 
   /* 選択外の部署は非表示 */
   .print-hidden { display: none !important; }
