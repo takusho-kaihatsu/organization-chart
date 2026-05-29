@@ -12,11 +12,6 @@ const DEPT_ORDER = [
   "本能に、感動を。の会"
 ];
 
-// 表示名 → シート名のマッピング（差異がある場合のみ）
-const SHEET_NAME_MAP = {
-  "新組/鮮組": "新組鮮組"
-};
-
 function getSheetName(deptName) {
-  return SHEET_NAME_MAP[deptName] || deptName;
+  return deptName;
 }
