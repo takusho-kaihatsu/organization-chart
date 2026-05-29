@@ -50,7 +50,7 @@ function renderDept(deptName, members, container, options = {}) {
 
       const label = document.createElement('div');
       label.className = 'section-label';
-      label.textContent = secName;
+      label.textContent = secName.replace(/ /g, '\n');
 
       const membersEl = document.createElement('div');
       membersEl.className = 'section-members';

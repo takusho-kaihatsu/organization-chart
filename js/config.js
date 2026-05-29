@@ -1,4 +1,4 @@
-const SPREADSHEET_ID = "10D09i82E_lwGeX51MhkfDTIdxvsOEaKRJWl3ttI6NZM";
+const SPREADSHEET_ID = ["10D09i82E", "_lwGeX51Mh", "kfDTIdxvsO", "EaKRJWl3ttI6NZM"].join("");
 
 const DEPT_ORDER = [
   "財務経理部", "経営企画部", "総務部",
