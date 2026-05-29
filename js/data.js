@@ -7,7 +7,44 @@ async function fetchDeptData(sheetName) {
   if (!res.ok) throw new Error(`Failed to fetch ${sheetName}: ${res.status}`);
   const csv = await res.text();
   const { data } = Papa.parse(csv, { header: true, skipEmptyLines: true });
-  return data;
+
+  if (data.length === 0) return [];
+
+  // gviz CSV の先頭行が "フィールド名 値" 形式になっている
+  // 例: "氏名 大岩哲己", "課 ", "役職 部長"
+  // → フィールド名と1人目のデータに分離して再構成する
+  const rawKeys = Object.keys(data[0]);
+  const colMap = {};    // rawKey → 正しいフィールド名
+  const firstPerson = {};
+
+  rawKeys.forEach(rawKey => {
+    if (!rawKey || rawKey.startsWith('_')) return; // Papaparse 自動生成キーをスキップ
+    const spaceIdx = rawKey.indexOf(' ');
+    if (spaceIdx === -1) {
+      colMap[rawKey] = rawKey;
+      firstPerson[rawKey] = '';
+    } else {
+      const fieldName = rawKey.substring(0, spaceIdx);
+      const value = rawKey.substring(spaceIdx + 1).trim();
+      colMap[rawKey] = fieldName;
+      firstPerson[fieldName] = value;
+    }
+  });
+
+  // 2行目以降を正しいフィールド名でリマップ
+  const rest = data
+    .map(row => {
+      const obj = {};
+      rawKeys.forEach(rawKey => {
+        const fieldName = colMap[rawKey];
+        if (fieldName) obj[fieldName] = row[rawKey] ?? '';
+      });
+      return obj;
+    })
+    .filter(obj => obj['氏名'] && obj['氏名'].trim() !== '');
+
+  // 1人目（ヘッダーに埋め込まれていた）を先頭に追加
+  return firstPerson['氏名'] ? [firstPerson, ...rest] : rest;
 }
 
 async function fetchAllDepts(onProgress) {
