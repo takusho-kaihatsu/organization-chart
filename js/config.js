@@ -1,7 +1,7 @@
 const SPREADSHEET_ID = ["10D09i82E", "_lwGeX51Mh", "kfDTIdxvsO", "EaKRJWl3ttI6NZM"].join("");
 
 const DEPT_ORDER = [
-  "財務経理部", "経営企画部", "総務部",
+  "財務経理部", "経営企画部", "人事総務部",
   "街づくり事業部", "街づくり開発部", "建築部", "施工管理部",
   "住宅営業部", "注文住宅部", "感動デザイン部", "リノベ事業部",
   "be naked事業室",
