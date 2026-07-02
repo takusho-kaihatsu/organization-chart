@@ -5,9 +5,9 @@ const DEPT_ORDER = [
   "街づくり営業部", "街づくり開発部", "街づくり建築部", "街づくり施工部",
   "街づくり販売部", "ストリア&RAM事業本部", "感動デザイン部", "千葉リノベ事業部",
   "福岡支店（リノベ事業部・開発事業部・管理部）",
-  "Good and", "Goodies", "エレキャスリゾート", "拓匠ホールディングス",
+  "Goodies", "Good and", "エレキャスリゾート", "SANSUKE", "拓匠ホールディングス",
   "経営メンバー（TK6)+顧問",
-  "Associate Officer", "SANSUKE"
+  "Associate Officer"
 ];
 
 function getSheetName(deptName) {
