@@ -3,6 +3,7 @@ function createMemberCard(member, options = {}) {
   const manager = isManager(member);
   const photoUrl = getPhotoUrl(member['写真URL']);
   const name = member['氏名'] || '';
+  const kana = getKana(member);
   const role = member['役職'] || '';
 
   const card = document.createElement('div');
@@ -12,7 +13,8 @@ function createMemberCard(member, options = {}) {
     <div class="member-photo-wrap">
       <img src="${photoUrl}" alt="${name}" loading="lazy" onerror="this.src='https://placehold.co/100x80?text=No+Photo'">
     </div>
-    <div class="member-name">${name}</div>
+    ${kana ? `<div class="member-kana">${kana}</div>` : ''}
+    <div class="member-name${kana ? ' has-kana' : ''}">${name}</div>
     ${role ? `<div class="member-role">${role}</div>` : ''}
   `;
   card.addEventListener('click', () => openModal(member));

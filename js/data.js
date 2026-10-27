@@ -91,6 +91,17 @@ function isDirectReport(m) {
   return !m.課 || m.課 === '' || m.課 === 'ー' || m.課 === '-';
 }
 
+// ふりがな列: 列名の表記ゆれ（フリガナ・よみがな 等）も受け付ける
+const KANA_FIELDS = ['ふりがな', 'フリガナ', 'よみがな', 'ヨミガナ', '読み仮名'];
+
+function getKana(member) {
+  for (const f of KANA_FIELDS) {
+    const v = (member[f] || '').trim();
+    if (v) return v;
+  }
+  return '';
+}
+
 function getPhotoUrl(url) {
   if (!url || url.trim() === '') {
     return 'https://placehold.co/100x80?text=No+Photo';

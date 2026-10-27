@@ -1,5 +1,6 @@
 function openModal(member) {
   const name    = member['氏名'] || '';
+  const kana    = getKana(member);
   const role    = member['役職'] || '';
   const section = member['課'] || '';
   const boss    = member['上司'] || '';
@@ -14,6 +15,8 @@ function openModal(member) {
 
   document.getElementById('modal-photo').src = photo;
   document.getElementById('modal-photo').alt = name;
+  document.getElementById('modal-kana').textContent = kana;
+  document.getElementById('modal-kana').style.display = kana ? '' : 'none';
   document.getElementById('modal-name').textContent = name;
   document.getElementById('modal-role').textContent = role;
   document.getElementById('modal-section').textContent = section;

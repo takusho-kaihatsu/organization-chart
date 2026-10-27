@@ -190,6 +190,19 @@ body {
   line-height: 1.2;
 }
 
+.member-kana {
+  font-size: 0.6rem;
+  color: #666;
+  padding: 4px 4px 0;
+  text-align: center;
+  line-height: 1.1;
+  word-break: break-all;
+}
+
+.member-name.has-kana {
+  padding-top: 1px;
+}
+
 .member-role {
   font-size: 0.72rem;
   color: #888;
@@ -203,6 +216,7 @@ body {
   width: 80px;
 }
 .member-card.small .member-photo-wrap { height: 64px; }
+.member-card.small .member-kana { font-size: 0.5rem; padding-top: 3px; }
 .member-card.small .member-name { font-size: 0.72rem; }
 .member-card.small .member-role { font-size: 0.62rem; }
 
@@ -286,6 +300,12 @@ body {
   object-position: top;
   border-radius: 6px;
   border: 2px solid #eee;
+}
+
+.modal-member-kana {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.2;
 }
 
 .modal-member-name {
